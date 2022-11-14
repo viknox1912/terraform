@@ -29,6 +29,9 @@ resource "google_compute_instance" "some_try_instance" {
       image = "centos-cloud/centos-7"
     }
   }
+  network_interface {
+    network = google_compute_network.vpc_network
+  }
 
 
   
