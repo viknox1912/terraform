@@ -23,8 +23,6 @@ resource "google_compute_network" "vpc_network" {
 resource "google_compute_instance" "some_try_instance" {
   name = "first_cluster"
   project = "divine-apogee-368514"
-  region  = "europe-west"
-  zone    = "europe-west3-c"
   machine_type = "e2-standard-2"
   boot_disk {
     initialize_params{
@@ -33,7 +31,6 @@ resource "google_compute_instance" "some_try_instance" {
   }
   network_interface {
     network = google_compute_network.vpc_network
-    
   }
 
   # Allow http
