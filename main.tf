@@ -13,10 +13,10 @@ provider "google" {
   zone    = "eu-west3-c"
 }
 
-resource "google_project_service" "compute_service" {
+/* resource "google_project_service" "compute_service" {
   project = local.project_id
   service = "compute.googleapis.com"
-}
+} */
 
 resource "google_compute_network" "vpc_network" {
   name                    = "terraform-network"
