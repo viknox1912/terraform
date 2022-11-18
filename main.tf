@@ -76,9 +76,9 @@ EOT
   network_interface {
     network = google_compute_network.vpc_network.self_link
     subnetwork = google_compute_subnetwork.private_network.self_link    
-    # access_config {
-    #   network_tier = "STANDARD"
-    # }
+     access_config {
+       network_tier = "STANDARD"
+     }
   }
 }
 
