@@ -56,7 +56,7 @@ resource "google_compute_instance" "some_try_instance" {
     }
   }
   network_interface {
-    network = google_compute_network.vpc_network
+    network = google_compute_network.vpc_network.self_link
   }
 
 
