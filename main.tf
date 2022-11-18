@@ -22,7 +22,7 @@ resource "google_compute_network" "vpc_network" {
 }
 resource "google_compute_subnetwork" "some_sub" {
   name = "some-sub"
-  ip_cidr_range = "10.2.420.0/16"
+  ip_cidr_range = "10.2.0.0/16"
   network = google_compute_network.vpc_network.self_link
   
 }
@@ -30,7 +30,7 @@ resource "google_compute_route" "some_route" {
   name = "some-route"
   dest_range = "0.0.0.0/0"
   network = google_compute_network.vpc_network.self_link
-  next_next_hop_gateway = "default-internet-gateway"
+  next_hop_gateway = "default-internet-gateway"
   priority = 100  
 }
 resource "google_compute_router" "some_router" {
@@ -42,8 +42,8 @@ resource "google_compute_router_nat" "some-nat" {
   name = "some-router-nat"
   router = google_compute_router.some_router.name
   region = google_compute_router.some_router.region
-  nnat_ip_allocate_option = "AUTO_ONLY"
-  sousource_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"  
+  nat_ip_allocate_option = "AUTO_ONLY"
+  source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"  
 }
 
 resource "google_compute_instance" "some_try_instance" {
