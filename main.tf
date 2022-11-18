@@ -8,13 +8,13 @@ terraform {
 }
 variable "default_region" {
   type = string
-  name = "default_region"   
+  #name = "default_region"   
   default = "europe-west"
 }
 
 variable "default_region_zone" {
   type = string 
-  name = "default_region_zone"
+  #name = "default_region_zone"
   default = "europe-west3-c"
   
 }
