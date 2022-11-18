@@ -6,13 +6,24 @@ terraform {
     }
   }
 }
+variable "default_region" {
+  type = string
+  name = "default_region"   
+  default = "europe-west"
+}
 
+variable "default_region_zone" {
+  type = string 
+  name = "default_region_zone"
+  default = "europe-west3-c"
+  
+}
 provider "google" {
   credentials = file("divine-apogee-368514-9031380e973f.json")
 
   project = "divine-apogee-368514"
-  region  = "europe-west"
-  zone    = "europe-west3-c"
+  region  = default_region.default
+  zone    = default_region_zone.default
 }
 
 resource "google_compute_network" "vpc_network" {
@@ -41,12 +52,12 @@ resource "google_compute_router" "some_router" {
 resource "google_compute_router_nat" "some-nat" {
   name = "some-router-nat"
   router = google_compute_router.some_router.name
-  region = google_compute_router.some_router.region
+  region = default_region.default
   nat_ip_allocate_option = "AUTO_ONLY"
   source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"  
 }
 
-resource "google_compute_instance" "some_try_instance" {
+resource "google_compute_instance" "first_cluster" {
   name = "first_cluster"
   project = "divine-apogee-368514"
   machine_type = "e2-standard-2"
