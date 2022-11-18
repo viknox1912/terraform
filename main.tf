@@ -56,7 +56,7 @@ resource "google_compute_route" "private_network_internet_route" {
 
 resource "google_compute_instance" "vm_instance" {
   name         = "nginx-instance"
-  machine_type = "f1-micro"
+  machine_type = "e2-micro"
 
   tags = ["nginx-instance"]
 
@@ -84,7 +84,7 @@ EOT
 
 resource "google_compute_instance" "vm_instance_2" {
   name         = "nginx-instance-2"
-  machine_type = "f1-micro"
+  machine_type = "e2-micro"
 
   tags = ["nginx-instance"]
 
