@@ -9,7 +9,7 @@ locals {
 provider "google" {
   credentials = file("divine-apogee-368514-9031380e973f.json")
   project = local.project_id
-  region  = "europe-west"
+  region  = "europe-west3"
   zone    = "europe-west3-c"
 }
 
