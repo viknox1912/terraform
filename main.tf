@@ -9,8 +9,8 @@ locals {
 provider "google" {
   credentials = file("divine-apogee-368514-9031380e973f.json")
   project = local.project_id
-  region  = "eu-west"
-  zone    = "eu-west3-c"
+  region  = "europe-west"
+  zone    = "europe-west3-c"
 }
 
 resource "google_project_service" "compute_service" {
